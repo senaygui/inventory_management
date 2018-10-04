@@ -15,15 +15,17 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       ## Trackable
-      # t.integer  :sign_in_count, default: 0, null: false
-      # t.datetime :current_sign_in_at
-      # t.datetime :last_sign_in_at
-      # t.inet     :current_sign_in_ip
-      # t.inet     :last_sign_in_ip
+      t.integer  :sign_in_count, default: 0, null: false
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.inet     :current_sign_in_ip
+      t.inet     :last_sign_in_ip
       t.string :first_name,null: false, default: ""
       t.string :last_name,null: false, default: ""
       t.string :middle_name,null: false, default: ""
       t.string :role,null: false, default: ""
+      t.string :department
+      t.string :job_role
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
