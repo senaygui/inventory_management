@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_222136) do
+ActiveRecord::Schema.define(version: 2018_10_06_225100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,5 +67,21 @@ ActiveRecord::Schema.define(version: 2018_10_04_222136) do
     t.index ["admin_user_id"], name: "index_material_requestions_on_admin_user_id"
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "admin_user_id"
+    t.string "product_name", default: "", null: false
+    t.integer "quantity", null: false
+    t.decimal "unit_price", null: false
+    t.decimal "total_price", null: false
+    t.string "measurment", default: "", null: false
+    t.decimal "part_number", null: false
+    t.string "reference", default: "", null: false
+    t.text "product_description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_stocks_on_admin_user_id"
+  end
+
   add_foreign_key "material_requestions", "admin_users"
+  add_foreign_key "stocks", "admin_users"
 end
