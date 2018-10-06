@@ -34,7 +34,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :role,  :as => :select, :collection => ["RootAdmin", "GeneralManager", "StoreManager", "Purchaser", "Requester"], label: "Account Role"
+      f.input :role,  :as => :select, :collection => ["RootAdmin", "GeneralManager", "StoreManager", "Purchaser", "Employee"], label: "Account Role"
       f.input :first_name
       f.input :last_name
       f.input :middle_name
