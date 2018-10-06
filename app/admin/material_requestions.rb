@@ -71,7 +71,8 @@ ActiveAdmin.register MaterialRequestion do
 		      user = AdminUser.find(r.admin_user_id)
 		      word_wrap("#{user.first_name} #{user.last_name }", :line_width => 7)
 		    end
-	     	row :product_name,:quantity
+	     	row :product_name
+        row :quantity
 	     	row :reason_of_request
 	     	row :general_manager_approval_status
 	     	row :gm_acceptance_condition

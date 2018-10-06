@@ -18,6 +18,7 @@ class Ability
         cannot :destroy, MaterialRequestion     
     when "StoreManager"
         can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        can :manage, Stock
         can :manage, MaterialRequestion, general_manager_approval_status: "Accepted"
         cannot :update, MaterialRequestion, store_manager_request_status: "Completed"  
         cannot :create, MaterialRequestion
