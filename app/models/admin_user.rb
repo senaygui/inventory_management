@@ -5,6 +5,7 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :material_requestions
+  has_many :stocks
 
   # def rootadmin?
   # 	role == "RootAdmin"
