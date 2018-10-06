@@ -4,7 +4,7 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable, :trackable
 
-
+  has_many :material_requestions
 
   # def rootadmin?
   # 	role == "RootAdmin"

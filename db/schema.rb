@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_115159) do
+ActiveRecord::Schema.define(version: 2018_10_04_222136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,4 +52,20 @@ ActiveRecord::Schema.define(version: 2018_09_24_115159) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "material_requestions", force: :cascade do |t|
+    t.bigint "admin_user_id"
+    t.string "product_name", default: "", null: false
+    t.integer "quantity", null: false
+    t.string "reason_of_request", default: "", null: false
+    t.string "general_manager_approval_status", default: "Pending"
+    t.string "store_manager_request_status"
+    t.string "gm_acceptance_condition"
+    t.string "sm_denied_reason"
+    t.string "gm_denied_reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_material_requestions_on_admin_user_id"
+  end
+
+  add_foreign_key "material_requestions", "admin_users"
 end

@@ -11,13 +11,25 @@ class Ability
         can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
         can :manage, ActiveAdmin::Comment
     when "GeneralManager"
-        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"   
+        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        can :manage, MaterialRequestion
+        cannot :update, MaterialRequestion , general_manager_approval_status: "Accepted"
+        cannot :create, MaterialRequestion
+        cannot :destroy, MaterialRequestion     
     when "StoreManager"
-        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"   
+        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        can :manage, MaterialRequestion, general_manager_approval_status: "Accepted"
+        cannot :update, MaterialRequestion, store_manager_request_status: "Completed"  
+        cannot :create, MaterialRequestion
+        cannot :destroy, MaterialRequestion    
     when "Purchaser"
-        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"   
-    when "Requester"
-        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"   
+        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"      
+    when "Employee"
+        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        can :create, MaterialRequestion 
+        can :read, MaterialRequestion , admin_user_id: user.id
+        can :update, MaterialRequestion , admin_user_id: user.id, general_manager_approval_status: "Pending"
+        can :destroy, MaterialRequestion, admin_user_id: user.id, general_manager_approval_status: "Pending"
     end
   end
 end
