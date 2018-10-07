@@ -37,7 +37,7 @@ ActiveAdmin.register MaterialRequestion do
 	scope :newest_first
 	scope :denied
 	scope :accepted
- 	
+ 	scope :completed
 
   form do |f|
   	f.semantic_errors *f.object.errors.keys 
@@ -80,7 +80,8 @@ ActiveAdmin.register MaterialRequestion do
 				row :gm_denied_reason
 				row :store_manager_request_status
 	     	row :sm_denied_reason
-	     	
+	     	row :created_at
+        row :updated_at
      	end	
     end
   end

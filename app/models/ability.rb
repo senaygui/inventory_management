@@ -26,7 +26,13 @@ class Ability
         can :create, PurchaseRequest
         can :read, PurchaseRequest
         cannot :update, PurchaseRequest, purchaser_approval: "Accepted"  
-        cannot :destroy, PurchaseRequest, purchaser_approval: "Accepted"    
+        cannot :destroy, PurchaseRequest, purchaser_approval: "Accepted"  
+
+        
+        can :read, ReturnRequest 
+        can :update, ReturnRequest  
+        cannot :update, ReturnRequest, sm_confirmation: "Completed"
+        cannot :destroy, ReturnRequest 
     when "Purchaser"
         can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin" 
         can :manage, PurchaseRequest
@@ -39,6 +45,11 @@ class Ability
         can :read, MaterialRequestion , admin_user_id: user.id
         can :update, MaterialRequestion , admin_user_id: user.id, general_manager_approval_status: "Pending"
         can :destroy, MaterialRequestion, admin_user_id: user.id, general_manager_approval_status: "Pending"
+
+        can :create, ReturnRequest 
+        can :read, ReturnRequest , admin_user_id: user.id
+        can :update, ReturnRequest , admin_user_id: user.id, sm_confirmation: "Pending"
+        can :destroy, ReturnRequest, admin_user_id: user.id, sm_confirmation: "Pending"
     end
   end
 end
