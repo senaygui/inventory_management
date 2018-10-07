@@ -22,9 +22,17 @@ class Ability
         can :manage, MaterialRequestion, general_manager_approval_status: "Accepted"
         cannot :update, MaterialRequestion, store_manager_request_status: "Completed"  
         cannot :create, MaterialRequestion
-        cannot :destroy, MaterialRequestion    
+        cannot :destroy, MaterialRequestion 
+        can :create, PurchaseRequest
+        can :read, PurchaseRequest
+        cannot :update, PurchaseRequest, purchaser_approval: "Accepted"  
+        cannot :destroy, PurchaseRequest, purchaser_approval: "Accepted"    
     when "Purchaser"
-        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"      
+        can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin" 
+        can :manage, PurchaseRequest
+        cannot :update, PurchaseRequest, purchaser_approval: "Completed"  
+        cannot :create, PurchaseRequest
+        cannot :destroy, PurchaseRequest     
     when "Employee"
         can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
         can :create, MaterialRequestion 
