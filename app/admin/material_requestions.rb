@@ -64,6 +64,7 @@ ActiveAdmin.register MaterialRequestion do
     end
     f.actions
   end
+  
   show do
     panel "Material Requestion" do
     	attributes_table_for material_requestion do
