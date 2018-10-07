@@ -37,6 +37,7 @@ permit_params :admin_user_id,:product_name,:quantity,:measurment,:product_descri
 	scope :newest_first
 	scope :denied
 	scope :accepted
+  scope :completed
 
 	form do |f|
   	f.semantic_errors *f.object.errors.keys 
@@ -67,7 +68,9 @@ permit_params :admin_user_id,:product_name,:quantity,:measurment,:product_descri
         row :quantity
 	     	row :measurment
 	     	row :purchaser_approval
-	     	row :denied_description 	
+	     	row :denied_description 
+        row :created_at
+        row :updated_at	
      	end	
     end
   end

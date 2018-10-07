@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2018_10_07_004513) do
     t.decimal "quantity", null: false
     t.text "product_description", default: "", null: false
     t.string "reference", default: "", null: false
-    t.string "sm_confirmation"
+    t.string "sm_confirmation", default: "Pending", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_user_id"], name: "index_return_requests_on_admin_user_id"

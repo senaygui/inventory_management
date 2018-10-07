@@ -6,7 +6,7 @@ class CreateReturnRequests < ActiveRecord::Migration[5.2]
       t.decimal :quantity, null: false
 			t.text :product_description, null: false, default: ""
 			t.string :reference, null: false, default: ""
-			t.string :sm_confirmation
+			t.string :sm_confirmation, null: false, default: "Pending"
       t.timestamps
     end
   end
